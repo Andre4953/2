@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConvoHub News</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ConvoHub News</h1>
+            <nav>
+                <ul id="nav-menu" role="navigation">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" id="articles">
+            <!-- Articles will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <button id="scrollToTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modal for reading more -->
+    <div id="modal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalText">
+        <div class="modal-content">
+            <span class="close" aria-label="Close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate"></p>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ConvoHub. All rights reserved.</p>
+            <div class="socials">
+                <a href="https://discord.gg/codinghub"><i class="fab fa-discord" aria-label="Discord"></i></a>
+                <a href="https://whatsapp.com/channel/0029VaiUyep3LdQYqfR4PY1E"><i class="fab fa-whatsapp" aria-label="WhatsApp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
