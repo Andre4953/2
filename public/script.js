@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const articlesContainer = document.getElementById("articles");
     if (articlesContainer) {
-        articles.forEach((article, index) => {
-            const articleElement = createArticleElement(article, index);
+        articles.forEach(article => {
+            const articleElement = createArticleElement(article);
             articlesContainer.appendChild(articleElement);
         });
     } else {
@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Modal functionality
     const modal = document.getElementById("modal");
     const closeModal = modal.querySelector(".close");
-    const modalText = modal.querySelector("#modalText");
 
     if (closeModal) {
         closeModal.addEventListener('click', function() {
@@ -63,8 +62,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    document.querySelectorAll('.read-more-btn').forEach((btn, index) => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            populateModal(articles[index]);
+            modal.style.display = "block";
+        });
+    });
+
     // Helper functions
-    function createArticleElement(article, index) {
+    function createArticleElement(article) {
         const articleElement = document.createElement("article");
 
         articleElement.innerHTML = `
@@ -72,14 +79,8 @@ document.addEventListener("DOMContentLoaded", function() {
             <h2>${article.title}</h2>
             <p class="meta"><i class="fas fa-calendar-alt"></i> Published on: <time datetime="${article.date}">${new Date(article.date).toLocaleDateString('en-US')}</time></p>
             <p>${article.summary}</p>
-            <a href="#" class="btn read-more-btn" data-index="${index}">Read more...</a>
+            <a href="#" class="btn read-more-btn">Read more...</a>
         `;
-
-        articleElement.querySelector('.read-more-btn').addEventListener('click', function(event) {
-            event.preventDefault();
-            populateModal(article);
-            modal.style.display = "block";
-        });
 
         return articleElement;
     }
@@ -87,6 +88,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function populateModal(article) {
         modal.querySelector("#modalTitle").textContent = article.title;
         modal.querySelector("#modalDate").textContent = `Published on: ${new Date(article.date).toLocaleDateString('en-US')}`;
-        modalText.innerHTML = `<p>${article.text}</p>`;
+        modal.querySelector("#modalText").textContent = article.text;
     }
 });
