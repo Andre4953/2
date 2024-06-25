@@ -16,10 +16,6 @@ app.get('/about-us', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about-us.html'));
 });
 
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'contact.html'));
-});
-
 // Bilder-Routen hinzufügen
 app.get('/Images/:image', (req, res) => {
     const imageFile = req.params.image;
